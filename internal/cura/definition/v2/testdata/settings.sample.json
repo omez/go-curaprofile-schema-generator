@@ -1,0 +1,51 @@
+{
+  "machine_settings": {
+    "label": "Machine",
+    "type": "category",
+    "description": "Machine specific settings",
+    "icon": "category_machine",
+    "children": {
+      "machine_name": {
+        "label": "Machine Type",
+        "description": "The name of your 3D printer model.",
+        "default_value": "Unknown",
+        "type": "str",
+        "settable_per_mesh": false,
+        "settable_per_extruder": false,
+        "settable_per_meshgroup": false
+      },
+      "machine_show_variants": {
+        "label": "Show Machine Variants",
+        "description": "Whether to show the different variants of this machine, which are described in separate json files.",
+        "default_value": false,
+        "type": "bool",
+        "settable_per_mesh": false,
+        "settable_per_extruder": false,
+        "settable_per_meshgroup": false
+      },
+      "machine_start_gcode": {
+        "label": "Start G-code",
+        "description": "G-code commands to be executed at the very start - separated by \\n.",
+        "default_value": "G28 ;Home\nG1 Z15.0 F6000 ;Move the platform down 15mm\n;Prime the extruder\nG92 E0\nG1 F200 E3\nG92 E0",
+        "type": "str",
+        "settable_per_mesh": false,
+        "settable_per_extruder": false,
+        "settable_per_meshgroup": false
+      }
+    }
+  },
+  "z_seam_type": {
+    "label": "Z Seam Alignment",
+    "description": "Starting point of each path in a layer. When paths in consecutive layers start at the same point a vertical seam may show on the print. When aligning these near a user specified location, the seam is easiest to remove. When placed randomly the inaccuracies at the paths' start will be less noticeable. When taking the shortest path the print will be quicker.",
+    "type": "enum",
+    "options": {
+      "back": "User Specified",
+      "shortest": "Shortest",
+      "random": "Random",
+      "sharpest_corner": "Sharpest Corner"
+    },
+    "default_value": "sharpest_corner",
+    "limit_to_extruder": "wall_0_extruder_nr",
+    "settable_per_mesh": true
+  }
+}
